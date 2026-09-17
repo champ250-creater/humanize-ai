@@ -5,7 +5,7 @@ import { ControlsToolbar } from "@/components/humanizer/controls-toolbar";
 import { EditorPanel } from "@/components/humanizer/editor-panel";
 import { OutputPanel } from "@/components/humanizer/output-panel";
 import { Wand2, Loader2 } from "lucide-react";
-import { trpc } from "@/components/providers";
+import { trpc } from "@/lib/trpc-client";
 
 export default function HumanizerPage() {
   const [inputText, setInputText] = useState("");
@@ -23,11 +23,11 @@ export default function HumanizerPage() {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
 
   const humanizeMutation = trpc.humanizer.humanize.useMutation({
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       setOutputText(data.humanizedText);
       setAiDetectionScore(data.aiDetectionScore ?? 0.05);
     },
-    onError: (error) => {
+    onError: (error: any) => {
       alert("Error: " + error.message);
     }
   });
