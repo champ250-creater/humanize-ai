@@ -16,22 +16,16 @@ export function CTASection() {
             Join 50,000+ students who trust HumanizeAI for their academic writing.
           </p>
           
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              required
-              className="flex-1 rounded-full px-6 py-4 text-zinc-900 border-0 ring-4 ring-indigo-500/30 focus:ring-indigo-400 focus:outline-none placeholder:text-zinc-400"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-zinc-900 text-white px-8 py-4 font-semibold hover:bg-zinc-800 transition-colors shadow-lg whitespace-nowrap"
+          <div className="flex justify-center">
+            <a
+              href="/dashboard"
+              className="rounded-full bg-zinc-900 text-white px-10 py-5 text-lg font-semibold hover:bg-zinc-800 transition-colors shadow-lg whitespace-nowrap"
             >
-              Get Started Free
-            </button>
-          </form>
-          <p className="text-sm text-indigo-200">
-            No credit card required. Cancel anytime.
+              Go to Dashboard
+            </a>
+          </div>
+          <p className="text-sm text-indigo-200 mt-6">
+            100% Free Forever • No login required
           </p>
         </div>
       </div>

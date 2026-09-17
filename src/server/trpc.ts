@@ -1,14 +1,10 @@
-import { initTRPC, TRPCError } from '@trpc/server';
+import { initTRPC } from '@trpc/server';
 import { ZodError } from 'zod';
-import { auth } from '@clerk/nextjs/server';
 
-export type TRPCContext = {
-  userId: string | null;
-};
+export type TRPCContext = {};
 
 export async function createTRPCContext(): Promise<TRPCContext> {
-  const { userId } = await auth();
-  return { userId };
+  return {};
 }
 
 const t = initTRPC.context<TRPCContext>().create({
@@ -25,9 +21,5 @@ const t = initTRPC.context<TRPCContext>().create({
 
 export const router = t.router;
 export const publicProcedure = t.procedure;
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.userId) {
-    throw new TRPCError({ code: 'UNAUTHORIZED', message: 'You must be logged in.' });
-  }
-  return next({ ctx: { ...ctx, userId: ctx.userId } });
-});
+// Map protectedProcedure to publicProcedure since everything is free now
+export const protectedProcedure = t.procedure;

@@ -8,8 +8,7 @@ export const NAV_ITEMS = [
   { name: "Citations", href: "/dashboard/citations", icon_name: "BookOpen" },
   { name: "Research", href: "/dashboard/research", icon_name: "FileText" },
   { name: "Documents", href: "/dashboard/documents", icon_name: "FolderOpen" },
-  { name: "Voice Profile", href: "/dashboard/voice-profile", icon_name: "Fingerprint" },
-  { name: "Settings", href: "/dashboard/settings", icon_name: "Settings" }
+  { name: "Voice Profile", href: "/dashboard/voice-profile", icon_name: "Fingerprint" }
 ];
 
 export const ACADEMIC_LEVELS = [
@@ -35,6 +34,3 @@ export const TONE_DEFAULTS = {
   creativity: 40,
   assertiveness: 50
 };
-
-export const FREE_WORD_LIMIT = 2500;
-export const PRO_WORD_LIMIT = 999999;

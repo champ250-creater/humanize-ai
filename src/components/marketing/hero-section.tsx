@@ -28,7 +28,7 @@ export function HeroSection() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
           <Link
-            href="/sign-up"
+            href="/dashboard"
             className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-indigo-700 hover:to-indigo-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 w-full sm:w-auto"
           >
             Start Writing for Free
@@ -45,7 +45,7 @@ export function HeroSection() {
 
         {/* Microcopy */}
         <p className="text-sm text-zinc-500 mb-16">
-          No credit card required • 2,500 free words/month
+          100% Free Forever • No login required
         </p>
 
         {/* Mockup */}
