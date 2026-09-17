@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import { protectedProcedure, router } from '../trpc';
-import { callClaude } from '@/lib/ai';
+import { callAI } from '@/lib/ai';
 import { DETECTION_SYSTEM_PROMPT } from '@/lib/prompts';
 
 export const detectionRouter = router({
   analyze: protectedProcedure
     .input(z.object({ text: z.string().min(20).max(50000) }))
     .mutation(async ({ input }) => {
-      const result = await callClaude({
+      const result = await callAI({
         systemPrompt: DETECTION_SYSTEM_PROMPT,
         userMessage: input.text,
         maxTokens: 4096,

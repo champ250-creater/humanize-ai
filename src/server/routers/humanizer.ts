@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { protectedProcedure, router } from '../trpc';
-import { callClaude } from '@/lib/ai';
+import { callAI } from '@/lib/ai';
 import { buildHumanizerPrompt } from '@/lib/prompts';
 
 const humanizeInputSchema = z.object({
@@ -27,7 +27,7 @@ export const humanizerRouter = router({
       voiceProfile: null,
     });
 
-    const humanizedText = await callClaude({
+    const humanizedText = await callAI({
       systemPrompt,
       userMessage: `Please humanize the following text:\n\n${input.text}`,
       maxTokens: Math.max(4096, wordCount * 3),
