@@ -1,5 +1,7 @@
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { db } from '@/server/db';
+import { users } from '@/server/db/schema';
 
 /**
  * Clerk webhook handler.
@@ -22,8 +24,26 @@ export async function POST(req: Request) {
       name: `${first_name} ${last_name}`,
     });
 
-    // TODO: Upsert user in database when DB is connected
-    // await db.insert(users).values({ ... }).onConflictDoUpdate(...);
+    try {
+      await db.insert(users).values({
+        clerkId: id,
+        email: primaryEmail || '',
+        firstName: first_name || '',
+        lastName: last_name || '',
+      }).onConflictDoUpdate({
+        target: users.clerkId,
+        set: {
+          email: primaryEmail || '',
+          firstName: first_name || '',
+          lastName: last_name || '',
+          updatedAt: new Date(),
+        },
+      });
+      console.log(`Successfully synced user ${id} to database.`);
+    } catch (error) {
+      console.error(`Failed to sync user ${id}:`, error);
+      return NextResponse.json({ error: 'Database error' }, { status: 500 });
+    }
   }
 
   if (eventType === 'user.deleted') {

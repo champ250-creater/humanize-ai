@@ -63,14 +63,14 @@ Rewrite the provided text to pass as human while maintaining all original facts,
 - Use em-dashes (—) or parentheses for asides.
 
 ### ACADEMIC & DISCIPLINE RULES
-- Academic Level: \${config.academicLevel}
-- Discipline Context: \${config.discipline}
-\${getDisciplineRules(config.discipline)}
+- Academic Level: ${config.academicLevel}
+- Discipline Context: ${config.discipline}
+${getDisciplineRules(config.discipline)}
 
 ### TONE CALIBRATION
-- Formality: \${config.toneSettings.formality}/100
-- Creativity: \${config.toneSettings.creativity}/100
-- Assertiveness: \${config.toneSettings.assertiveness}/100
+- Formality: ${config.toneSettings.formality}/100
+- Creativity: ${config.toneSettings.creativity}/100
+- Assertiveness: ${config.toneSettings.assertiveness}/100
 Adjust the voice to match these settings.
 `;
 
@@ -78,12 +78,12 @@ Adjust the voice to match these settings.
     prompt += `
 ### VOICE MATCHING PROFILE
 You must match the following specific stylistic traits of the user's past writing:
-- Average Sentence Length target: ~\${config.voiceProfile.avgSentenceLength} words.
-- Vocabulary Complexity target: \${config.voiceProfile.vocabularyComplexity}/100.
-- Passive Voice Ratio: target approximately \${Math.round(config.voiceProfile.passiveVoiceRatio * 100)}% passive sentences.
-- Frequently Used Transitions to incorporate naturally: \${config.voiceProfile.commonTransitions.join(', ')}.
-- Comma Frequency: \${config.voiceProfile.commaFrequency} (0=very few, 1=heavy use of subclauses).
-- Profile Formality target: \${config.voiceProfile.formalityScore}/100.
+- Average Sentence Length target: ~${config.voiceProfile.avgSentenceLength} words.
+- Vocabulary Complexity target: ${config.voiceProfile.vocabularyComplexity}/100.
+- Passive Voice Ratio: target approximately ${Math.round(config.voiceProfile.passiveVoiceRatio * 100)}% passive sentences.
+- Frequently Used Transitions to incorporate naturally: ${config.voiceProfile.commonTransitions.join(', ')}.
+- Comma Frequency: ${config.voiceProfile.commaFrequency} (0=very few, 1=heavy use of subclauses).
+- Profile Formality target: ${config.voiceProfile.formalityScore}/100.
 `;
   }
 
