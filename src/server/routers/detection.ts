@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { protectedProcedure, router } from '../trpc';
+import { publicProcedure, router } from '../trpc';
 import { callAI } from '@/lib/ai';
 import { DETECTION_SYSTEM_PROMPT } from '@/lib/prompts';
 
 export const detectionRouter = router({
-  analyze: protectedProcedure
+  analyze: publicProcedure
     .input(z.object({ text: z.string().min(20).max(50000) }))
     .mutation(async ({ input }) => {
       const result = await callAI({
